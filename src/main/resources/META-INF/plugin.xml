@@ -1,0 +1,71 @@
+<idea-plugin>
+    <id>com.tao.bloc</id>
+    <!-- Plug-in name, the name displayed by the official plugin library -->
+    <name>Flutter Bloc</name>
+    <!-- version number  -->
+    <!--    <version>1.1</version>-->
+    <!-- homepage and email (contact address)-->
+    <vendor email="xdd666@foxmail.com" url="https://github.com/CNAD666/bloc_template">小呆呆666</vendor>
+
+    <!-- The description of the plug-in
+    (the default value cannot be used, it must be modified to its own.
+    And it needs to be greater than 40 characters)-->
+    <description><![CDATA[
+    <h2>Used to generate the template code of flutter_bloc framework</h2>
+    <ul>
+        <li>Right-click the File: New -> Flutter Bloc </li>
+        <li>GitHub：<a href="https://github.com/CNAD666/bloc_template">bloc_template</a></li>
+
+        <h3>Bloc Use Article</h3>
+        <li>掘金：<a href="https://juejin.cn/post/6968272002515894303">使用+源码剖析：Flutter Provider的另一面</a></li>
+    </ul>
+    ]]></description>
+
+
+    <!--  It is recommended to write the id of other plug-ins that the plug-in depends on. Do
+    not write it. In some cases, uploading the plug-in will report an error -->
+    <depends>com.intellij.modules.all</depends>
+
+    <!-- Plug-in compatible with IDEA Build number-->
+    <idea-version since-build="173"/>
+    <!--    <idea-version since-build="173" until-build="203.7148.57"/>-->
+
+    <!-- Write plugin actions -->
+    <actions>
+        <!-- Add your actions here -->
+        <action id="com.tao.NewBloc" class="NewBloc" text="Flutter Bloc"
+                description="Create Flutter Bloc template code" icon="/image/provider_icon.png">
+            <add-to-group group-id="NewGroup" anchor="first"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- application level-->
+        <applicationService serviceImplementation="helper.BlocTaoData"/>
+        <applicationConfigurable parentId="tools" instance="setting.SettingsConfigurable"
+                                 id="BlocSettingsConfigurable" displayName="Flutter Bloc Setting"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <defaultLiveTemplatesProvider implementation="live_templates.BlocTemplateProvider"/>
+        <liveTemplateContext implementation="live_templates.BlocContext"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!--Selector Action-->
+        <intentionAction>
+            <className>intention_action.WrapWithBlocProviderAction</className>
+            <category>Provider</category>
+        </intentionAction>
+        <!--Consumer Action-->
+        <intentionAction>
+            <className>intention_action.WrapWithBlocListenerAction</className>
+            <category>Provider</category>
+        </intentionAction>
+        <!--ChangeNotifierProvider Action-->
+        <intentionAction>
+            <className>intention_action.WrapWithBlocBuilderAction</className>
+            <category>Provider</category>
+        </intentionAction>
+    </extensions>
+</idea-plugin>
