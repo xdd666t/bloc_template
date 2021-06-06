@@ -30,7 +30,7 @@ public class SettingsConfigurable implements Configurable {
         boolean modified;
         modified = !mSetting.blocName.getText().equals(data.blocName)
                 || !mSetting.cubitName.getText().equals(data.cubitName)
-                || !mSetting.stateName.getText().equals(data.stateName)
+                || !mSetting.eventName.getText().equals(data.eventName)
                 || !mSetting.viewName.getText().equals(data.viewName)
                 || !mSetting.viewFileName.getText().equals(data.viewFileName);
         return modified;
@@ -40,7 +40,7 @@ public class SettingsConfigurable implements Configurable {
     public void apply() {
         data.blocName = mSetting.blocName.getText();
         data.cubitName = mSetting.cubitName.getText();
-        data.stateName = mSetting.stateName.getText();
+        data.eventName = mSetting.eventName.getText();
         data.viewName = mSetting.viewName.getText();
         data.viewFileName = mSetting.viewFileName.getText();
     }
@@ -49,7 +49,7 @@ public class SettingsConfigurable implements Configurable {
     public void reset() {
         mSetting.blocName.setText(data.blocName);
         mSetting.cubitName.setText(data.cubitName);
-        mSetting.stateName.setText(data.stateName);
+        mSetting.eventName.setText(data.eventName);
         mSetting.viewName.setText(data.viewName);
         mSetting.viewFileName.setText(data.viewFileName);
     }

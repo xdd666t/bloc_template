@@ -24,10 +24,10 @@ public class BlocConfig {
     public static String viewName = "Page";
     public static String viewFileName = "View";
 
-    //state layer name
-    public static String stateName = "State";
+    //event layer name
+    public static String eventName = "Event";
 
     //mode name
-    public static final String modeDefault = "Bloc";
-    public static final String modeHigh = "Cubit";
+    public static final String modeDefault = "Cubit";
+    public static final String modeHigh = "Bloc";
 }

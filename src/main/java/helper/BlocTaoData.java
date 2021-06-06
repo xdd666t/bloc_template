@@ -31,8 +31,8 @@ public class BlocTaoData implements PersistentStateComponent<BlocTaoData> {
     public String viewName = BlocConfig.viewName;
     public String viewFileName = BlocConfig.viewFileName;
 
-    //state layer name
-    public String stateName = BlocConfig.stateName;
+    //event layer name
+    public String eventName = BlocConfig.eventName;
 
     public static BlocTaoData getInstance() {
         return ServiceManager.getService(BlocTaoData.class);

@@ -9,7 +9,7 @@ apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'idea'
 
-group 'com.tao.provider'
+group 'com.tao.bloc'
 // If the plug-in related properties are set here,
 // the corresponding settings in Plugin.xml will be invalid
 // The two settings below are updated frequently, so put them here
@@ -54,7 +54,7 @@ patchPluginXml {
         <li>Improve development efficiency</li>
         <li>compatible with multiple versions of ideas</li>
         <li>support to modify Logic name</li>
-        <li>support to modify View,State name</li>
+        <li>support to modify View,Bloc,View,Cubit name</li>
         <li>add plugin logo</li>
         <li>add memory function</li>
         <li>add wrap snippet：Consumer，Selector，ChangeNotifierProvider</li>

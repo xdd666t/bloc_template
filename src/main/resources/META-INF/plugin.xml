@@ -15,12 +15,17 @@
     <ul>
         <li>Right-click the File: New -> Flutter Bloc </li>
         <li>GitHub：<a href="https://github.com/CNAD666/bloc_template">bloc_template</a></li>
+    </ul>
 
-        <h3>Bloc Use Article</h3>
-        <li>掘金：<a href="https://juejin.cn/post/6968272002515894303">使用+源码剖析：Flutter Provider的另一面</a></li>
+    <h3>Some Statement</h3>
+    <ul>
+        <li>The wrap snippet come form <a href="https://github.com/felangel/bloc/blob/master/extensions/intellij/intellij_generator_plugin/src/main/java/com/bloc/intellij_generator_plugin/intention_action/Snippets.java">intellij_generator_plugin</a> </li>
+        <li>The fast code snippet prompt come from <a href="https://github.com/felangel/bloc/blob/master/extensions/intellij/intellij_generator_plugin/src/main/resources/liveTemplates/Bloc.xml">intellij_generator_plugin</a> </li>
     </ul>
     ]]></description>
 
+<!--    <h3>Bloc Use Article</h3>-->
+<!--    <li>掘金：<a href="https://juejin.cn/post/6968272002515894303">使用+源码剖析：Flutter Provider的另一面</a></li>-->
 
     <!--  It is recommended to write the id of other plug-ins that the plug-in depends on. Do
     not write it. In some cases, uploading the plug-in will report an error -->
@@ -34,7 +39,7 @@
     <actions>
         <!-- Add your actions here -->
         <action id="com.tao.NewBloc" class="NewBloc" text="Flutter Bloc"
-                description="Create Flutter Bloc template code" icon="/image/provider_icon.png">
+                description="Create Flutter Bloc template code" icon="/image/bloc_icon.png">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>
@@ -52,19 +57,29 @@
     </extensions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <!--Selector Action-->
+        <!--BlocBuilder Action-->
         <intentionAction>
-            <className>intention_action.WrapWithBlocProviderAction</className>
+            <className>intention_action.WrapWithBlocBuilderAction</className>
             <category>Provider</category>
         </intentionAction>
-        <!--Consumer Action-->
+        <!--BlocConsumer Action-->
+        <intentionAction>
+            <className>intention_action.WrapWithBlocConsumerAction</className>
+            <category>Provider</category>
+        </intentionAction>
+        <!--BlocListener Action-->
         <intentionAction>
             <className>intention_action.WrapWithBlocListenerAction</className>
             <category>Provider</category>
         </intentionAction>
-        <!--ChangeNotifierProvider Action-->
+        <!--BlocProvider Action-->
         <intentionAction>
-            <className>intention_action.WrapWithBlocBuilderAction</className>
+            <className>intention_action.WrapWithBlocProviderAction</className>
+            <category>Provider</category>
+        </intentionAction>
+        <!--RepositoryProvider Action-->
+        <intentionAction>
+            <className>intention_action.WrapWithRepositoryProviderAction</className>
             <category>Provider</category>
         </intentionAction>
     </extensions>

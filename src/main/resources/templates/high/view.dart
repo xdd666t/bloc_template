@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'provider.dart';
+import 'bloc.dart';
+import 'event.dart';
 
 class $namePage extends StatelessWidget {
-  final provider = $nameProvider();
+  final bloc = $nameBloc();
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => provider,
+    return BlocProvider(
+      create: (BuildContext context) => bloc..add(InitEvent()),
       child: Container(),
     );
   }

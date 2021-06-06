@@ -220,7 +220,7 @@ public class NewBloc extends AnAction {
     private void generateDefault(String folder, String prefixName) {
         String path = psiPath + folder;
         generateFile("view.dart", path, prefixName + data.viewFileName.toLowerCase() + ".dart");
-        generateFile("view.dart", path, prefixName + data.viewFileName.toLowerCase() + ".dart");
+        generateFile("state.dart", path, prefixName + "state" + ".dart");
         generateFile("cubit.dart", path, prefixName + data.cubitName.toLowerCase() + ".dart");
     }
 
@@ -228,8 +228,8 @@ public class NewBloc extends AnAction {
         String path = psiPath + folder;
         generateFile("high/view.dart", path, prefixName + data.viewFileName.toLowerCase() + ".dart");
         generateFile("high/bloc.dart", path, prefixName + data.blocName.toLowerCase() + ".dart");
-        generateFile("high/event.dart", path, prefixName + data.blocName.toLowerCase() + ".dart");
-        generateFile("high/state.dart", path, prefixName + data.stateName.toLowerCase() + ".dart");
+        generateFile("high/event.dart", path, prefixName + data.eventName.toLowerCase() + ".dart");
+        generateFile("high/state.dart", path, prefixName + "state" + ".dart");
     }
 
 
@@ -263,37 +263,53 @@ public class NewBloc extends AnAction {
     private String dealContent(String inputFileName, String outFileName) {
         //name baseFolder
         String baseFolder = "/templates/";
+        String type = templateGroup.getSelection().getActionCommand();
 
         //read file
         String content = "";
         try {
             InputStream in = this.getClass().getResourceAsStream(baseFolder + inputFileName);
             content = new String(readStream(in));
-        } catch (Exception e) { }
+        } catch (Exception e) {
+        }
 
         String prefixName = "";
         //Adding a prefix requires modifying the imported class name
         if (data.usePrefix) {
             prefixName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, nameTextField.getText()) + "_";
         }
-        //replace logic
-        if (outFileName.contains(data.blocName.toLowerCase())) {
-            content = content.replaceAll("state.dart", prefixName + data.stateName.toLowerCase() + ".dart");
-            content = content.replaceAll("Provider", data.blocName);
-            content = content.replaceAll("State", data.stateName);
-            content = content.replaceAll("state", data.stateName.toLowerCase());
+        //replace Cubit
+        if (type.equals(BlocConfig.modeDefault) && outFileName.contains(data.cubitName.toLowerCase())) {
+            content = content.replaceAll("\\$nameCubit", "\\$name" + data.cubitName);
+            content = content.replace("state.dart", prefixName + "state" + ".dart");
         }
-        //replace state
-        if (outFileName.contains(data.stateName.toLowerCase())) {
-            content = content.replaceAll("State", data.stateName);
+
+        //replace Bloc
+        if (type.equals(BlocConfig.modeHigh) && outFileName.contains(data.blocName.toLowerCase())) {
+            content = content.replaceAll("\\$nameBloc", "\\$name" + data.blocName);
+            content = content.replaceAll("\\$nameEvent", "\\$name" + data.eventName);
+            content = content.replaceAll("InitEvent", "Init" + data.eventName);
+            content = content.replaceAll("event.dart", prefixName + data.eventName.toLowerCase() + ".dart");
+            content = content.replaceAll("event", data.eventName.toLowerCase());
+            content = content.replace("state.dart", prefixName + "state" + ".dart");
+        }
+        //replace Event
+        if (outFileName.contains(data.eventName.toLowerCase())) {
+            content = content.replaceAll("Event", data.eventName);
         }
         //replace view
         if (outFileName.contains(data.viewFileName.toLowerCase())) {
-            content = content.replace("\'provider.dart\'", "\'" + prefixName + data.blocName.toLowerCase() + ".dart" + "\'");
+            content = content.replace("\'bloc.dart\'", "\'" + prefixName + data.blocName.toLowerCase() + ".dart" + "\'");
+            content = content.replace("\'cubit.dart\'", "\'" + prefixName + data.cubitName.toLowerCase() + ".dart" + "\'");
+            content = content.replace("final bloc", "final " + data.blocName.toLowerCase());
+            content = content.replace("final cubit", "final " + data.cubitName.toLowerCase());
+            content = content.replace("=> bloc", "=> " + data.blocName.toLowerCase());
+            content = content.replace("=> cubit", "=> " + data.cubitName.toLowerCase());
+            content = content.replaceAll("\\$nameCubit", "\\$name" + data.cubitName);
+            content = content.replaceAll("\\$nameBloc", "\\$name" + data.blocName);
+            content = content.replaceAll("event.dart", prefixName + data.eventName.toLowerCase() + ".dart");
+            content = content.replaceAll("Event", data.eventName);
             content = content.replace("Page", data.viewName);
-            content = content.replaceFirst("Provider", data.blocName);
-            content = content.replace("final provider", "final " + data.blocName.toLowerCase());
-            content = content.replace("=> provider", "=> " + data.blocName.toLowerCase());
         }
 
         content = content.replaceAll("\\$name", nameTextField.getText());
