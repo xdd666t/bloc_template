@@ -309,6 +309,7 @@ public class NewBloc extends AnAction {
             content = content.replaceAll("\\$nameBloc", "\\$name" + data.blocName);
             content = content.replaceAll("event.dart", prefixName + data.eventName.toLowerCase() + ".dart");
             content = content.replaceAll("Event", data.eventName);
+            content = content.replace("state.dart", prefixName + "state" + ".dart");
             content = content.replace("Page", data.viewName);
         }
 
