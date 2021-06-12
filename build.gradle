@@ -14,7 +14,7 @@ group 'com.tao.bloc'
 // the corresponding settings in Plugin.xml will be invalid
 // The two settings below are updated frequently, so put them here
 // The version number is modified here
-version '1.2.0'
+version '1.2.3'
 
 // must!!!
 sourceCompatibility = 1.8
@@ -51,6 +51,7 @@ patchPluginXml {
     <h1>1.2.x</h1>
     <ul>
         <li>optimized layout</li>
+        <li>fix bug</li>
     </ul>
 
     <h1>1.0.x</h1>
