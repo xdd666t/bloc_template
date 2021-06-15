@@ -22,10 +22,11 @@
         <li>The wrap snippet come form <a href="https://github.com/felangel/bloc/blob/master/extensions/intellij/intellij_generator_plugin/src/main/java/com/bloc/intellij_generator_plugin/intention_action/Snippets.java">intellij_generator_plugin</a> </li>
         <li>The fast code snippet prompt come from <a href="https://github.com/felangel/bloc/blob/master/extensions/intellij/intellij_generator_plugin/src/main/resources/liveTemplates/Bloc.xml">intellij_generator_plugin</a> </li>
     </ul>
-    ]]></description>
 
-<!--    <h3>Bloc Use Article</h3>-->
-<!--    <li>掘金：<a href="https://juejin.cn/post/6968272002515894303">使用+源码剖析：Flutter Provider的另一面</a></li>-->
+    <h3>Bloc 文章</h3>
+    <li><a href="https://juejin.cn/post/6856268776510504968">使用篇：flutter_bloc使用解析---骚年，你还在手搭bloc吗！</a></li>
+    <li><a href="https://juejin.cn/post/6973900070358319135">源码剖析：Flutter Bloc背后的思想</a></li>
+    ]]></description>
 
     <!--  It is recommended to write the id of other plug-ins that the plug-in depends on. Do
     not write it. In some cases, uploading the plug-in will report an error -->
