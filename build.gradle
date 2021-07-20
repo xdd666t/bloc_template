@@ -14,7 +14,7 @@ group 'com.tao.bloc'
 // the corresponding settings in Plugin.xml will be invalid
 // The two settings below are updated frequently, so put them here
 // The version number is modified here
-version '1.2.5'
+version '1.3.0'
 
 // must!!!
 sourceCompatibility = 1.8
@@ -48,6 +48,12 @@ intellij {
 // Update instructions are here
 patchPluginXml {
     changeNotes """
+    <h1>1.3.x</h1>
+    <ul>
+        <li>adjust the code template</li>
+        <li>capitalize the first letter of the module name</li>
+    </ul>
+
     <h1>1.2.x</h1>
     <ul>
         <li>optimized layout</li>

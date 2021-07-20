@@ -6,13 +6,18 @@ import 'event.dart';
 import 'state.dart';
 
 class $namePage extends StatelessWidget {
-  final bloc = $nameBloc();
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => bloc..add(InitEvent()),
-      child: Container(),
+      create: (BuildContext context) => $nameBloc()..add(InitEvent()),
+      child: Builder(builder: (context) => _buildPage(context)),
     );
   }
+
+  Widget _buildPage(BuildContext context) {
+    final bloc = BlocProvider.of<$nameBloc>(context);
+
+    return Container();
+  }
 }
+

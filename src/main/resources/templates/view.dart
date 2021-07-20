@@ -5,13 +5,19 @@ import 'cubit.dart';
 import 'state.dart';
 
 class $namePage extends StatelessWidget {
-  final cubit = $nameCubit();
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => cubit,
-      child: Container(),
+      create: (BuildContext context) => $nameCubit(),
+      child: Builder(builder: (context) => _buildPage(context)),
     );
   }
+
+  Widget _buildPage(BuildContext context) {
+    final cubit = BlocProvider.of<$nameCubit>(context);
+
+    return Container();
+  }
 }
+
+

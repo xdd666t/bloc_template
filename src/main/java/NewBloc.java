@@ -192,7 +192,7 @@ public class NewBloc extends AnAction {
         data.usePrefix = prefixBox.isSelected();
 
 
-        String name = nameTextField.getText();
+        String name = upperCase(nameTextField.getText());
         String prefix = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, name);
         String folder = "";
         String prefixName = "";
@@ -276,7 +276,7 @@ public class NewBloc extends AnAction {
         String prefixName = "";
         //Adding a prefix requires modifying the imported class name
         if (data.usePrefix) {
-            prefixName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, nameTextField.getText()) + "_";
+            prefixName = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, upperCase(nameTextField.getText())) + "_";
         }
         //replace Cubit
         if (type.equals(BlocConfig.modeDefault) && outFileName.contains(data.cubitName.toLowerCase())) {
@@ -290,7 +290,8 @@ public class NewBloc extends AnAction {
             content = content.replaceAll("\\$nameEvent", "\\$name" + data.eventName);
             content = content.replaceAll("InitEvent", "Init" + data.eventName);
             content = content.replaceAll("event.dart", prefixName + data.eventName.toLowerCase() + ".dart");
-            content = content.replaceAll("event", data.eventName.toLowerCase());
+            content = content.replaceAll("event\\)", data.eventName.toLowerCase() + "\\)");
+            content = content.replaceAll("event is", data.eventName.toLowerCase() + " is");
             content = content.replace("state.dart", prefixName + "state" + ".dart");
         }
         //replace Event
@@ -313,7 +314,7 @@ public class NewBloc extends AnAction {
             content = content.replace("Page", data.viewName);
         }
 
-        content = content.replaceAll("\\$name", nameTextField.getText());
+        content = content.replaceAll("\\$name", upperCase(nameTextField.getText()));
 
         return content;
     }
@@ -380,5 +381,9 @@ public class NewBloc extends AnAction {
 
     private void dispose() {
         jDialog.dispose();
+    }
+
+    private String upperCase(String str) {
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 }
