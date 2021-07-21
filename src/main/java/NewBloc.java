@@ -300,17 +300,17 @@ public class NewBloc extends AnAction {
         }
         //replace view
         if (outFileName.contains(data.viewFileName.toLowerCase())) {
-            content = content.replace("\'bloc.dart\'", "\'" + prefixName + data.blocName.toLowerCase() + ".dart" + "\'");
-            content = content.replace("\'cubit.dart\'", "\'" + prefixName + data.cubitName.toLowerCase() + ".dart" + "\'");
+            content = content.replace("'bloc.dart'", "'" + prefixName + data.blocName.toLowerCase() + ".dart" + "'");
+            content = content.replace("'cubit.dart'", "'" + prefixName + data.cubitName.toLowerCase() + ".dart" + "'");
             content = content.replace("final bloc", "final " + data.blocName.toLowerCase());
             content = content.replace("final cubit", "final " + data.cubitName.toLowerCase());
             content = content.replace("=> bloc", "=> " + data.blocName.toLowerCase());
             content = content.replace("=> cubit", "=> " + data.cubitName.toLowerCase());
-            content = content.replaceAll("\\$nameCubit", "\\$name" + data.cubitName);
-            content = content.replaceAll("\\$nameBloc", "\\$name" + data.blocName);
-            content = content.replaceAll("event.dart", prefixName + data.eventName.toLowerCase() + ".dart");
+            content = content.replaceAll("nameCubit", "name" + data.cubitName);
+            content = content.replaceAll("nameBloc", "name" + data.blocName);
+            content = content.replaceAll("'event.dart'", "'" + prefixName + data.eventName.toLowerCase() + ".dart'");
             content = content.replaceAll("Event", data.eventName);
-            content = content.replace("state.dart", prefixName + "state" + ".dart");
+            content = content.replace("'state.dart'", "'" + prefixName + "state.dart'");
             content = content.replace("Page", data.viewName);
         }
 
