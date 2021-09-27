@@ -4,7 +4,7 @@
 
 ## provider usage
 
-- 掘金：[]() 
+- 掘金：[Flutter Bloc背后的思想](https://juejin.cn/post/6973900070358319135) 
 
 # Some Statement
 
@@ -18,7 +18,7 @@
    - There are some optional functions, so make it into a multi-button style 
    - you can operate according to your own needs
 
-![bloc_plugin]()
+![bloc](https://cdn.jsdelivr.net/gh/CNAD666/MyData@master/pic/flutter/blog/20210720181037.gif)
 
 ## Description
 
