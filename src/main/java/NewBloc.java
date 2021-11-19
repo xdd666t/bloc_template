@@ -33,7 +33,7 @@ public class NewBloc extends AnAction {
      * Use folder：default true
      * Use prefix：default false
      */
-    private JCheckBox folderBox, prefixBox;
+    private JCheckBox folderBox, prefixBox, bloc8Box;
 
     @Override
     public void actionPerformed(AnActionEvent event) {
@@ -131,7 +131,7 @@ public class NewBloc extends AnAction {
     private void setCodeFile(Container container) {
         //Select build file
         JPanel file = new JPanel();
-        file.setLayout(new GridLayout(1, 2));
+        file.setLayout(new GridLayout(2, 2));
         file.setBorder(BorderFactory.createTitledBorder("Select Function"));
 
         //use folder
@@ -143,6 +143,11 @@ public class NewBloc extends AnAction {
         prefixBox = new JCheckBox("usePrefix", data.usePrefix);
         setMargin(prefixBox, 5, 10);
         file.add(prefixBox);
+
+        //bloc 8.0+
+        bloc8Box = new JCheckBox("bloc 8.0+", data.bloc8);
+        setMargin(bloc8Box, 5, 10);
+        file.add(bloc8Box);
 
         container.add(file);
         setDivision(container);
@@ -190,6 +195,7 @@ public class NewBloc extends AnAction {
         }
         data.useFolder = folderBox.isSelected();
         data.usePrefix = prefixBox.isSelected();
+        data.bloc8 = bloc8Box.isSelected();
 
 
         String name = upperCase(nameTextField.getText());
@@ -227,7 +233,11 @@ public class NewBloc extends AnAction {
     private void generateHigh(String folder, String prefixName) {
         String path = psiPath + folder;
         generateFile("high/view.dart", path, prefixName + data.viewFileName.toLowerCase() + ".dart");
-        generateFile("high/bloc.dart", path, prefixName + data.blocName.toLowerCase() + ".dart");
+        if (data.bloc8) {
+            generateFile("bloc8.0+/bloc.dart", path, prefixName + data.blocName.toLowerCase() + ".dart");
+        } else {
+            generateFile("high/bloc.dart", path, prefixName + data.blocName.toLowerCase() + ".dart");
+        }
         generateFile("high/event.dart", path, prefixName + data.eventName.toLowerCase() + ".dart");
         generateFile("high/state.dart", path, prefixName + "state" + ".dart");
     }

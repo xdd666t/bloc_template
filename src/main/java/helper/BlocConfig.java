@@ -13,6 +13,9 @@ public class BlocConfig {
     public static boolean usePrefix = false;
 
     //default false
+    public static boolean bloc8 = false;
+
+    //default false
     public static boolean nullSafety = false;
 
 

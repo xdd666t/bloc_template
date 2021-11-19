@@ -16,11 +16,9 @@ public class BlocTaoData implements PersistentStateComponent<BlocTaoData> {
     // 0:default  1:high   2:extended
     public int defaultMode = BlocConfig.defaultMode;
 
-    //default true
     public boolean useFolder = BlocConfig.useFolder;
-
-    //default false
     public boolean usePrefix = BlocConfig.usePrefix;
+    public boolean bloc8 = BlocConfig.usePrefix;
 
 
     //Logical layer name
